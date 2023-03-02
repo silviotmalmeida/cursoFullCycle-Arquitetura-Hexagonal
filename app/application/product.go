@@ -15,7 +15,6 @@ func init() {
 
 // criando a interface de product
 type ProductInterface interface {
-
 	// definindo os métodos a serem implementados
 	IsValid() (bool, error)
 	Enable() error
@@ -26,21 +25,29 @@ type ProductInterface interface {
 	GetPrice() float64
 }
 
+// definindo a interface do productService, para manipulação de products sem acessar a classe diretamente
 type ProductServiceInterface interface {
+	// método para consulta
 	Get(id string) (ProductInterface, error)
+	// método para criação
 	Create(name string, price float64) (ProductInterface, error)
+	// método para ativação do product
 	Enable(product ProductInterface) (ProductInterface, error)
+	// método para desativação do product
 	Disable(product ProductInterface) (ProductInterface, error)
 }
 
+// definindo a interface para consulta de product no BD
 type ProductReader interface {
 	Get(id string) (ProductInterface, error)
 }
 
+// definindo a interface para inserção de product no BD
 type ProductWriter interface {
 	Save(product ProductInterface) (ProductInterface, error)
 }
 
+// definindo a interface composta, para consulta e inserção de product no BD
 type ProductPersistenceInterface interface {
 	ProductReader
 	ProductWriter
@@ -54,7 +61,6 @@ const (
 
 // definindo a classe product que implementa a interface de product
 type Product struct {
-
 	// definindo os atributos, tipos e restrições
 	ID     string  `valid:"uuidv4"`
 	Name   string  `valid:"required"`
@@ -74,22 +80,18 @@ func NewProduct() *Product {
 
 // implementando o método da inteface IsValid()
 func (p *Product) IsValid() (bool, error) {
-
 	// se o status estiver vazio, considera DISABLED
 	if p.Status == "" {
 		p.Status = DISABLED
 	}
-
 	// se o status estiver com um valor inconsistente, retorna erro
 	if p.Status != ENABLED && p.Status != DISABLED {
 		return false, errors.New("the status must be enabled or disabled")
 	}
-
 	// se o preço for menor que zero, retorna erro
 	if p.Price < 0 {
 		return false, errors.New("the price must be greater or equal zero")
 	}
-
 	// validação geral com o goValidator
 	// as regras são definidas na função init() e nas tags dos atributos
 	_, err := govalidator.ValidateStruct(p)

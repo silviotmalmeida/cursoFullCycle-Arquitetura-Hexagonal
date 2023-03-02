@@ -3,7 +3,6 @@ package application_test
 import (
 	"testing"
 
-	uuid "github.com/satori/go.uuid"
 	"github.com/silviotmalmeida/cursoFullCycle-Arquitetura-Hexagonal/application"
 	"github.com/stretchr/testify/require"
 )
@@ -13,10 +12,8 @@ import (
 //// o product só é válido se possuir status consistente e price >= 0
 func TestProduct_IsValid(t *testing.T) {
 	// criando o product
-	product := application.Product{}
-	product.ID = uuid.NewV4().String()
+	product := application.NewProduct()
 	product.Name = "hello"
-	product.Status = application.DISABLED
 	product.Price = 10
 
 	// validando o product
@@ -46,10 +43,8 @@ func TestProduct_IsValid(t *testing.T) {
 //// o product só pode ser ativado se possuir price > 0
 func TestProduct_Enable(t *testing.T) {
 	// criando o product
-	product := application.Product{}
-	product.ID = uuid.NewV4().String()
+	product := application.NewProduct()
 	product.Name = "hello"
-	product.Status = application.DISABLED
 	product.Price = 10
 
 	// ativando o product com price > 0
@@ -73,10 +68,8 @@ func TestProduct_Enable(t *testing.T) {
 //// o product só pode ser desativado se possuir price = 0
 func TestProduct_Disable(t *testing.T) {
 	// criando o product
-	product := application.Product{}
-	product.ID = uuid.NewV4().String()
+	product := application.NewProduct()
 	product.Name = "hello"
-	product.Status = application.DISABLED
 	product.Price = 0
 
 	// desativando o product com price = 0
@@ -100,10 +93,8 @@ func TestProduct_Disable(t *testing.T) {
 //// o getter deve retornar corretamente o atributo
 func TestProduct_GetID(t *testing.T) {
 	// criando o product
-	product := application.Product{}
-	product.ID = uuid.NewV4().String()
+	product := application.NewProduct()
 	product.Name = "hello"
-	product.Status = application.DISABLED
 	product.Price = 10
 
 	// obtendo o valor do atributo retornado
@@ -116,10 +107,8 @@ func TestProduct_GetID(t *testing.T) {
 //// o getter deve retornar corretamente o atributo
 func TestProduct_GetName(t *testing.T) {
 	// criando o product
-	product := application.Product{}
-	product.ID = uuid.NewV4().String()
+	product := application.NewProduct()
 	product.Name = "hello"
-	product.Status = application.DISABLED
 	product.Price = 10
 
 	// obtendo o valor do atributo retornado
@@ -132,10 +121,8 @@ func TestProduct_GetName(t *testing.T) {
 //// o getter deve retornar corretamente o atributo
 func TestProduct_GetStatus(t *testing.T) {
 	// criando o product
-	product := application.Product{}
-	product.ID = uuid.NewV4().String()
+	product := application.NewProduct()
 	product.Name = "hello"
-	product.Status = application.DISABLED
 	product.Price = 10
 
 	// obtendo o valor do atributo retornado
@@ -148,10 +135,8 @@ func TestProduct_GetStatus(t *testing.T) {
 //// o getter deve retornar corretamente o atributo
 func TestProduct_GetPrice(t *testing.T) {
 	// criando o product
-	product := application.Product{}
-	product.ID = uuid.NewV4().String()
+	product := application.NewProduct()
 	product.Name = "hello"
-	product.Status = application.DISABLED
 	product.Price = 10
 
 	// obtendo o valor do atributo retornado
