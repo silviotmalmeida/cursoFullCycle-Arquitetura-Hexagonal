@@ -7,7 +7,7 @@ import (
 	"github.com/silviotmalmeida/cursoFullCycle-Arquitetura-Hexagonal/application"
 )
 
-// definindo a classe productDb que implementa a interface de sql
+// definindo a classe adapter productDb que utiliza o módulo de sql nativo do golang
 type ProductDb struct {
 	db *sql.DB
 }
