@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// suíte de testes unitários da classe Product
+// suíte de testes unitários da classe ProductService
 
 //// se for executada uma busca por product no bd, os atributos devem ser iguais aos do objeto de origem
 func TestProductService_Get(t *testing.T) {
