@@ -1,12 +1,8 @@
 # definindo a imagem base
 FROM golang:1.16
 
-# instalando as dependências
-RUN apt-get update && \
-    apt-get install curl golang-go -y
-
 # definindo a pasta de trabalho a ser criada e focada no acesso
-WORKDIR /go/src/
+WORKDIR /go/src
 
 #variáveis de ambiente
 ENV PATH="/go/bin:${PATH}"
