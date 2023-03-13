@@ -5,12 +5,22 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"database/sql"
 	"os"
 
+	"github.com/silviotmalmeida/cursoFullCycle-Arquitetura-Hexagonal/adapters/db"
+	"github.com/silviotmalmeida/cursoFullCycle-Arquitetura-Hexagonal/application"
 	"github.com/spf13/cobra"
 )
 
+// inicializando o db
+var database, _ = sql.Open("sqlite3", "db.sqlite")
 
+// inicializando o adapter de persistência de products
+var productDb = db.NewProductDb(database)
+
+// inicializando o service para manipulação de products
+var productService = application.ProductService{Persistence: productDb}
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -47,5 +57,3 @@ func init() {
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
-
-

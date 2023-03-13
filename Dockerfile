@@ -6,11 +6,12 @@ WORKDIR /go/src
 
 #variáveis de ambiente
 ENV PATH="/go/bin:${PATH}"
+ENV CGO_CFLAGS="-g -O2 -Wno-return-local-addr"
 
 # comandos necessários
-RUN go get -u github.com/spf13/cobra@latest && \
+RUN go get -u github.com/spf13/cobra@v1.6.1 && \
     go install github.com/golang/mock/mockgen@v1.5.0 && \
-    go install github.com/spf13/cobra-cli@latest
+    go install github.com/spf13/cobra-cli@v1.3.0
 
 RUN apt-get update && apt-get install sqlite3 -y
 

@@ -5,5 +5,7 @@
 -- para gerar os mocks necessários para testar o service utiliza-se: mockgen -destination={nome-da-pasta-de-destino/nome-do-arquivo-de-mocks} -source={nome-do-arquivo-com-as-interfaces} {nome-do-pacote}
 Ex: mockgen -destination=application/mocks/application.go -source=application/product.go application
 
--- para inicializar o cli do cobra utiliza-se, na pasta onde está o go.mod: cobra-cli init 
+-- para inicializar o cli do cobra utiliza-se, na pasta onde está o go.mod: cobra-cli init
+
+-- para inadicionar um novo comando ao cli do cobra utiliza-se, na pasta onde está o go.mod: cobra-cli add {nome-do-comando} 
 
