@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo " - Atualizando as dependências..."
+go mod tidy
 echo " - Resetando o banco de dados..."
 rm -rf db.sqlite
 touch db.sqlite

@@ -7,10 +7,10 @@ require (
 	github.com/codegangsta/negroni v1.0.0
 	github.com/golang/mock v1.6.0
 	github.com/gorilla/mux v1.8.0
+	github.com/kr/pretty v0.3.0 // indirect
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible
-	github.com/mitchellh/go-homedir v1.1.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/cobra v1.6.1
-	github.com/spf13/viper v1.15.0
 	github.com/stretchr/testify v1.8.2
+	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 )
